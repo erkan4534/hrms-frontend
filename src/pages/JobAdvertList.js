@@ -7,9 +7,9 @@ function JobAdvertList() {
     const [jobAdverts, setJobAdverts] = useState([]);
 
     useEffect(()=>{
-        let jobAdvertService = new JobAdvertService()
+        let jobAdvertService = new JobAdvertService();
         jobAdvertService.getJobAdverts().then(result=>setJobAdverts(result.data.data));
-    })
+    },[])
 
     return (
         <div>
