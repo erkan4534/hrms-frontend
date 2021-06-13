@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+
+import Navi from "./layouts/Navi";
+import {Col, Container,Row} from "react-bootstrap";
+import Side from "./layouts/Side";
+import JobAdvertList from "./pages/JobAdvertList";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Container>
+            <Row>
+                <Col><Navi/></Col>
+            </Row>
+            <Row>
+                <Col sm={2}><Side/></Col>
+                <Col sm={10}><JobAdvertList/></Col>
+            </Row>
+        </Container>
     </div>
   );
 }
