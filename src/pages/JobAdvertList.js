@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react'
 import JobAdvertService from "../services/JobAdvertService";
 import {Table} from "reactstrap";
 
-function JobAdvertList() {
+function JobAdvertList(props) {
 
     const [jobAdverts, setJobAdverts] = useState([]);
 
@@ -26,7 +26,7 @@ function JobAdvertList() {
                 <tbody>
                 {
                     jobAdverts.map(jobAdvert => (
-                        <tr>
+                        <tr key={jobAdvert.firmName}>
                             <td>{jobAdvert.firmName}</td>
                             <td>{jobAdvert.positionName}</td>
                             <td>{jobAdvert.openPositionsNumber}</td>
