@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import CityService from "../services/CityService";
-import {Form} from "react-bootstrap";
+import {Col, Form} from "react-bootstrap";
 
 function CityList() {
 
@@ -13,14 +13,17 @@ function CityList() {
 
     return (
         <div>
+            <Form.Group className="mb-3">
+            <Form.Label className='font-weight-bold'>City</Form.Label>
             <Form.Control as="select">
-                <option>City is Selected</option>
+                <option>Select</option>
                 {
                     cities.map(city=>(
                         <option key={city.id} value={city.id}>{city.name}</option>
                     ))
                 }
             </Form.Control>
+            </Form.Group>
         </div>
     );
 }
