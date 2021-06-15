@@ -1,17 +1,20 @@
 import React from 'react';
-import {Col, Container, Row} from "react-bootstrap";
+import { Container, Row,Col} from "react-bootstrap";
 import CityList from "../pages/CityList";
+import PositionList from "../pages/PositionList";
 
 
 function Side() {
     return (
         <div>
-            <Container className="mt-sm-5">
+           <Container className="mt-sm-5">
                 <Row>
-                   <CityList/>
+                    <Col sm={12}><CityList/></Col>
+                </Row>
+                <Row>
+                    <Col sm={12}><PositionList/></Col>
                 </Row>
             </Container>
-
         </div>
     );
 }

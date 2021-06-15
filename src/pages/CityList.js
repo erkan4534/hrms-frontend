@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import CityService from "../services/CityService";
 import {Form} from "react-bootstrap";
 
-function CityList(props) {
+function CityList() {
 
     const [cities, setCities] = useState([]);
 
