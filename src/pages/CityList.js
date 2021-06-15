@@ -13,7 +13,7 @@ function CityList() {
 
     return (
         <div>
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-2">
             <Form.Label className='font-weight-bold'>City</Form.Label>
             <Form.Control as="select">
                 <option>Select</option>
