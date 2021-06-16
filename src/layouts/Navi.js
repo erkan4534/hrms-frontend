@@ -5,7 +5,7 @@ export default function Navi() {
     return (
         <div>
             <Navbar bg="light" expand="lg" bg="dark" variant="dark">
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand href="#home">Hrms</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
