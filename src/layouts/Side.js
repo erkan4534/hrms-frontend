@@ -7,7 +7,7 @@ import PositionList from "../pages/PositionList";
 function Side() {
     return (
         <div>
-            <Container className="nav-bar-top">
+            <Container>
                 <Row>
                     <Col sm={12}><CityList/></Col>
                 </Row>

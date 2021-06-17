@@ -14,7 +14,7 @@ function JobAdvertList(props) {
 
     return (
         <div>
-            <Container className="nav-bar-top">
+            <Container>
                 <Table striped bordered hover size="sm" >
                     <thead>
                     <tr>

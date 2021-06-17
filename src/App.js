@@ -9,11 +9,11 @@ function App() {
     <div className="App">
         <Container>
             <Row>
-                <Col className="fixed-top"><Navi/></Col>
+                <Col sm={12}><Navi/></Col>
             </Row>
-            <Row>
-                <Col className="position-fixed" sm={2}><Side/></Col>
-                <Col className="ml-auto" sm={10}><JobAdvertList/></Col>
+            <Row className='mt-3'>
+                <Col  sm={2}><Side/></Col>
+                <Col  sm={10}><JobAdvertList/></Col>
             </Row>
         </Container>
     </div>
