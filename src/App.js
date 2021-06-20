@@ -13,7 +13,13 @@ function App() {
             </Row>
             <Row className='mt-3'>
                 <Col  sm={2}><Side/></Col>
-                <Col  sm={10}><JobAdvertList/></Col>
+                <Col  sm={10} >
+                    <Container>
+                        <Row >
+                            <Col sm={12}><JobAdvertList/></Col>
+                        </Row>
+                    </Container>
+                </Col>
             </Row>
         </Container>
     </div>
