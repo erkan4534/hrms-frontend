@@ -6,7 +6,6 @@ import {Nav, Navbar, NavDropdown, Container} from "react-bootstrap";
 export default function Navi() {
     return (
         <div>
-            <Container>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                     <Navbar.Brand href="#home">Hrms</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
@@ -31,7 +30,6 @@ export default function Navi() {
                         </NavDropdown>
                     </Nav>
                 </Navbar>
-            </Container>
         </div>
     );
 }

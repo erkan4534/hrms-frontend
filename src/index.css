@@ -16,3 +16,10 @@ code {
   margin-top: 6rem;
 }
 
+
+@media screen and (max-width: 900px) {
+  .side_margin_top {
+    margin-top: 1000rem;
+  }
+}
+
