@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {FormGroup,Label,Input,Button,Form,Row,Col} from "reactstrap";
 
-class JobAdvertAdd extends Component {
+class JobAdvert extends Component {
     render() {
         return (
             <div>
@@ -59,4 +59,4 @@ class JobAdvertAdd extends Component {
     }
 }
 
-export default JobAdvertAdd;
+export default JobAdvert;

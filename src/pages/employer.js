@@ -1,23 +1,18 @@
 import React, {useState} from 'react';
-import  {Col, Form, Button, InputGroup,Alert} from "react-bootstrap";
+import {Col, Form, Button, Toast, Alert} from "react-bootstrap";
 import Feedback from "react-bootstrap/Feedback";
 import axios from "axios";
+import {toast} from "react-toastify";
 
-function EmployerAdd() {
+function Employer() {
 
     const [validated, setValidated] = useState(false);
-
     const [values, setValues] = useState({
         firmNameId: '', webSiteId: '', telNoId: '', passwordId: '',rePasswordId: '',emailId:''
     });
 
     const onChangeHandler =(event)=>{
-
-        setValues({
-            ...values,
-            [event.target.name]: event.target.value
-        });
-
+        setValues({...values, [event.target.name]: event.target.value});
     }
 
     const handleSubmit = (event) => {
@@ -38,32 +33,25 @@ function EmployerAdd() {
              webSite: values.webSiteId
         };
 
-
-
         axios.post('http://localhost:8080/api/employers/add', userObject)
-            .then((res) => {
-                console.log(res.data)
+            .then(res => (
+              //alert(32323)
+               toast.info("Yeni iş veren sisteme eklendi")
+            )).catch(error => (
+                toast.success(error.data)
+            ));
 
-                    [
-                    'primary'
-                    ].map((variant, idx) => (
-                    <Alert key={idx} variant={variant}>
-                        This is a {variant} alert with{' '}
-                        <Alert.Link href="#">an example link</Alert.Link>. Give it a click if you
-                        like.
-                    </Alert>
-                ));
-
-            }).catch((error) => {
-            console.log(error)
-        });
 
         setValidated(true);
     };
 
+
+
     return (
         <div>
+
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
+
                 <Form.Row>
                     <Form.Group as={Col} md="6" >
                         <Form.Label>Firm Name</Form.Label>
@@ -143,8 +131,6 @@ function EmployerAdd() {
                     </Form.Group>
 
                 </Form.Row>
-
-
                 <Button type="submit">Save</Button>
             </Form>
         </div>
@@ -152,4 +138,4 @@ function EmployerAdd() {
 }
 
 
-export default EmployerAdd;
+export default Employer;

@@ -1,9 +1,24 @@
-import React from 'react';
-import {Nav, Navbar, NavDropdown, Container} from "react-bootstrap";
-
-
+import React, {useState} from 'react';
+import {Nav, Navbar} from "react-bootstrap";
+import {useHistory} from 'react-router';
+import SignedIn from "./SignedIn";
+import SignedOut from "./SignedOut";
 
 export default function Navi() {
+
+    const [isAuthenticated,setIsAuthenticated]=useState(false);
+    const history = useHistory();
+
+    function handleSignOut(){
+        setIsAuthenticated(false);
+        history.push("/");
+    }
+
+    function handleSignIn(){
+        setIsAuthenticated(true);
+    }
+
+
     return (
         <div>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -17,17 +32,7 @@ export default function Navi() {
                     </Navbar.Collapse>
 
                     <Nav className="mr-auto">
-                        <Nav.Link href="#deets">More deets</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
-                        </Nav.Link>
-                        <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider/>
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                        </NavDropdown>
+                        {isAuthenticated?<SignedIn signOut={handleSignOut} />:<SignedOut signIn={handleSignIn}/>}
                     </Nav>
                 </Navbar>
         </div>
