@@ -4,7 +4,7 @@ import Side from "./Side";
 import JobAdvertList from "../pages/JobAdvertList";
 import {Route} from "react-router-dom";
 import JobAdvert from "../pages/JobAdvert";
-import Employer from "../pages/employer";
+import Employer from "../pages/Employer";
 import {ToastContainer} from "react-toastify";
 
 function Dashboard() {

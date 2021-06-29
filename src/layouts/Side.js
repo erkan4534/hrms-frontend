@@ -9,10 +9,10 @@ function Side() {
         <div>
             <Container>
                 <Row>
-                  {/*  <Col sm={12}><CityList/></Col>*/}
+                    <Col sm={12}><CityList/></Col>
                 </Row>
                 <Row>
-                   {/* <Col sm={12}><PositionList/></Col>*/}
+                    <Col sm={12}><PositionList/></Col>
                 </Row>
             </Container>
         </div>

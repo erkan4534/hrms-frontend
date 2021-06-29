@@ -1,8 +1,31 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import {Col, Form, Button, Toast, Alert} from "react-bootstrap";
 import Feedback from "react-bootstrap/Feedback";
-import axios from "axios";
 import {toast} from "react-toastify";
+import EmployerService from "../services/EmployerService";
+
+ function employerAdd(values){
+
+    const params = {
+        firmName: values.firmNameId,
+        person:{
+            email: values.emailId,
+            password: values.passwordId,
+            telNo: values.telNoId
+        },
+        webSite: values.webSiteId
+    };
+
+    let employerService = new EmployerService()
+    employerService.employerAdd(params).then(res => {
+        if (res.status == 'success') {
+            alert(res.status)
+        } else {
+            alert('Something went wrong while creating account')
+        }
+    })
+
+}
 
 function Employer() {
 
@@ -23,29 +46,12 @@ function Employer() {
             event.stopPropagation();
         }
 
-        const userObject = {
-            firmName: values.firmNameId,
-              person:{
-                  email: values.emailId,
-                  password: values.passwordId,
-                  telNo: values.telNoId
-              },
-             webSite: values.webSiteId
-        };
+        let result= employerAdd(values);
 
-        axios.post('http://localhost:8080/api/employers/add', userObject)
-            .then(res => (
-              //alert(32323)
-               toast.info("Yeni iş veren sisteme eklendi")
-            )).catch(error => (
-                toast.success(error.data)
-            ));
-
+        alert(JSON.stringify(result));
 
         setValidated(true);
     };
-
-
 
     return (
         <div>

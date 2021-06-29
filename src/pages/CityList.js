@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import CityService from "../services/CityService";
-import {Col, Form} from "react-bootstrap";
+import {Form} from "react-bootstrap";
 
 function CityList() {
 

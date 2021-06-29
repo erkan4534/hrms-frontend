@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import PositionService from "../services/PositionService";
-import {Col, Form} from "react-bootstrap";
+import {Form} from "react-bootstrap";
 
 function PositionList() {
 
