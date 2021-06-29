@@ -55,7 +55,6 @@ function Employer() {
 
     return (
         <div>
-
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
 
                 <Form.Row>
@@ -135,9 +134,10 @@ function Employer() {
                             We'll never share your email with anyone else.
                         </Form.Text>
                     </Form.Group>
-
                 </Form.Row>
-                <Button type="submit">Save</Button>
+
+                <Button type="submit" className='mr-2 w-5'>Kaydet</Button>
+                <Button className='w-5'>Ara</Button>
             </Form>
         </div>
     );

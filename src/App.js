@@ -1,19 +1,18 @@
-import Dashboard from "./layouts/Dashboard";
 import Navi from "./layouts/Navi";
 import React from "react";
 import {Container} from "react-bootstrap";
 import 'react-toastify/dist/ReactToastify.css';
+import Dashboard from "./layouts/Dashboard";
 
 function App() {
     return (
         <div>
-            <Container fluid>
+           {/* <Container fluid>
                 <Navi/>
-            </Container>
+            </Container>*/}
 
-            <Container className="mt-2">
-                <Dashboard/>
-            </Container>
+            <Dashboard/>
+
         </div>
     );
 }
