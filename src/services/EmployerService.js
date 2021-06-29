@@ -7,6 +7,10 @@ class EmployerService extends Component {
         return axios.post('http://localhost:8080/api/employers/add', params);
     }
 
+    getAllEmployers(){
+        return axios.get('http://localhost:8080/api/employers/getAll');
+    }
+
 }
 
 export default EmployerService;

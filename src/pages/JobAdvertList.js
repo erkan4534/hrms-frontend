@@ -7,10 +7,9 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
-import Link from "@material-ui/core/Link";
 import {makeStyles} from "@material-ui/core/styles";
 
-function JobAdvertList(props) {
+function JobAdvertList() {
 
     const [jobAdverts, setJobAdverts] = useState([]);
 

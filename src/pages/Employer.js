@@ -3,29 +3,13 @@ import {Col, Form, Button, Toast, Alert} from "react-bootstrap";
 import Feedback from "react-bootstrap/Feedback";
 import {toast} from "react-toastify";
 import EmployerService from "../services/EmployerService";
+import Title from "../layouts/Title";
+import {Table} from "reactstrap";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
+import TableBody from "@material-ui/core/TableBody";
 
- function employerAdd(values){
-
-    const params = {
-        firmName: values.firmNameId,
-        person:{
-            email: values.emailId,
-            password: values.passwordId,
-            telNo: values.telNoId
-        },
-        webSite: values.webSiteId
-    };
-
-    let employerService = new EmployerService()
-    employerService.employerAdd(params).then(res => {
-        if (res.status == 'success') {
-            alert(res.status)
-        } else {
-            alert('Something went wrong while creating account')
-        }
-    })
-
-}
 
 function Employer() {
 
@@ -33,6 +17,9 @@ function Employer() {
     const [values, setValues] = useState({
         firmNameId: '', webSiteId: '', telNoId: '', passwordId: '',rePasswordId: '',emailId:''
     });
+
+    const [employerList, setEmployerList] = useState([]);
+
 
     const onChangeHandler =(event)=>{
         setValues({...values, [event.target.name]: event.target.value});
@@ -48,15 +35,43 @@ function Employer() {
 
         let result= employerAdd(values);
 
-        alert(JSON.stringify(result));
-
         setValidated(true);
     };
+
+    function employerAdd(values){
+
+        const params = {
+            firmName: values.firmNameId,
+            person:{
+                email: values.emailId,
+                password: values.passwordId,
+                telNo: values.telNoId
+            },
+            webSite: values.webSiteId
+        };
+
+        let employerService = new EmployerService()
+        employerService.employerAdd(params).then(res => {
+            if (res.status == 'success') {
+                alert(res.status)
+            } else {
+                alert('Something went wrong while creating account')
+            }
+        })
+
+    }
+
+
+    function getEmployerList(){
+        let employerService = new EmployerService();
+        employerService.getAllEmployers().then(result=>{
+             setEmployerList(result.data.data)
+        });
+    }
 
     return (
         <div>
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
-
                 <Form.Row>
                     <Form.Group as={Col} md="6" >
                         <Form.Label>Firm Name</Form.Label>
@@ -136,12 +151,39 @@ function Employer() {
                     </Form.Group>
                 </Form.Row>
 
-                <Button type="submit" className='mr-2 w-5'>Kaydet</Button>
-                <Button className='w-5'>Ara</Button>
+                <Button type="submit" className='mr-2'>Kaydet</Button>
+                <Button onClick={getEmployerList}>Ara</Button>
             </Form>
+
+            {
+                 (employerList.length>0) && <div className='mt-4' >
+                    <Title>İş Verenler</Title>
+                    <Table size="small">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Firma Adı</TableCell>
+                                <TableCell>Web Sitesi</TableCell>
+                                <TableCell>Email</TableCell>
+                                <TableCell>Tel No</TableCell>
+                            </TableRow>
+                        </TableHead>
+
+                        <TableBody>
+                            {employerList.map((row) => (
+                                <TableRow key={row.id}>
+                                    <TableCell>{row.firmName}</TableCell>
+                                    <TableCell>{row.webSite}</TableCell>
+                                    <TableCell>{row.person.email}</TableCell>
+                                    <TableCell>{row.person.telNo}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
+            }
+
         </div>
     );
 }
-
 
 export default Employer;
