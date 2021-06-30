@@ -43,18 +43,24 @@ function Employer() {
 
         let employerService = new EmployerService()
         employerService.employerAdd(params).then(res => {
-
             if(res.data.success===true){
                 toast.info(res.data.message)
             }else{
                 toast.error(res.data.message)
             }
-        })
+        });
     }
 
-    function getEmployerList(){
+    const getEmployerList=(values)=>{
         let employerService = new EmployerService();
-        employerService.getAllEmployers().then(result=>{
+        const params = {
+            firmName: values.firmNameId,
+            email: values.emailId,
+            telNo: values.telNoId,
+            webSite: values.webSiteId
+        };
+
+        employerService.getAllEmployers(params).then(result=>{
              setEmployerList(result.data.data)
         });
     }
@@ -142,7 +148,7 @@ function Employer() {
                 </Form.Row>
 
                 <Button type="submit" className='mr-2'>Kaydet</Button>
-                <Button onClick={getEmployerList}>Ara</Button>
+                <Button onClick={()=>getEmployerList(values)}>Ara</Button>
             </Form>
 
             {
