@@ -115,6 +115,7 @@ export default function Dashboard() {
 
     return (
         <div className={classes.root}>
+            <ToastContainer position="bottom-right"/>
             <CssBaseline />
             <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
@@ -131,9 +132,9 @@ export default function Dashboard() {
                         Hrms
                     </Typography>
                     <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
+                        {/*<Badge badgeContent={4} color="secondary">
                             <NotificationsIcon />
-                        </Badge>
+                        </Badge>*/}
                     </IconButton>
                 </Toolbar>
             </AppBar>
@@ -161,7 +162,7 @@ export default function Dashboard() {
 
                         <Grid item xs={12}>
                             <Paper className={fixedHeightPaper}>
-                                <ToastContainer position="bottom-right"/>
+
                                 <Row >
                                     <Col  sm={12}>
                                         <Route exact path="/" component={JobAdvertList}/>

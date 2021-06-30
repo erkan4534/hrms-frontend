@@ -1,5 +1,5 @@
-import React, {useState,useEffect} from 'react';
-import {Col, Form, Button, Toast, Alert} from "react-bootstrap";
+import React, {useState} from 'react';
+import {Col, Form, Button} from "react-bootstrap";
 import Feedback from "react-bootstrap/Feedback";
 import {toast} from "react-toastify";
 import EmployerService from "../services/EmployerService";
@@ -10,7 +10,6 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
 
-
 function Employer() {
 
     const [validated, setValidated] = useState(false);
@@ -20,26 +19,18 @@ function Employer() {
 
     const [employerList, setEmployerList] = useState([]);
 
-
     const onChangeHandler =(event)=>{
         setValues({...values, [event.target.name]: event.target.value});
     }
 
     const handleSubmit = (event) => {
-        const form = event.currentTarget;
-
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-
-        let result= employerAdd(values);
-
+        event.preventDefault();
+        event.stopPropagation();
+        employerAdd(values);
         setValidated(true);
     };
 
     function employerAdd(values){
-
         const params = {
             firmName: values.firmNameId,
             person:{
@@ -52,15 +43,14 @@ function Employer() {
 
         let employerService = new EmployerService()
         employerService.employerAdd(params).then(res => {
-            if (res.status == 'success') {
-                alert(res.status)
-            } else {
-                alert('Something went wrong while creating account')
+
+            if(res.data.success===true){
+                toast.info(res.data.message)
+            }else{
+                toast.error(res.data.message)
             }
         })
-
     }
-
 
     function getEmployerList(){
         let employerService = new EmployerService();
@@ -74,7 +64,7 @@ function Employer() {
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Form.Row>
                     <Form.Group as={Col} md="6" >
-                        <Form.Label>Firm Name</Form.Label>
+                        <Form.Label className='font-weight-bold'>Firm Name</Form.Label>
                         <Form.Control
                             required
                             type="text"
@@ -85,7 +75,7 @@ function Employer() {
                         <Feedback type="invalid">Firm name is required!</Feedback>
                     </Form.Group>
                     <Form.Group as={Col} md="6" >
-                        <Form.Label>Web Site</Form.Label>
+                        <Form.Label className='font-weight-bold'>Web Site</Form.Label>
                        <Form.Control
                             required
                             type="text"
@@ -99,7 +89,7 @@ function Employer() {
 
                 <Form.Row>
                     <Form.Group as={Col} md="6" >
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label className='font-weight-bold'>Password</Form.Label>
                         <Form.Control
                             required
                             type="text"
@@ -110,7 +100,7 @@ function Employer() {
                         <Feedback type="invalid">Password is required!</Feedback>
                     </Form.Group>
                     <Form.Group as={Col} md="6" >
-                        <Form.Label>Re-Password</Form.Label>
+                        <Form.Label className='font-weight-bold'>Re-Password</Form.Label>
                         <Form.Control
                             required
                             type="text"
@@ -124,7 +114,7 @@ function Employer() {
 
                 <Form.Row>
                     <Form.Group as={Col} md="6" >
-                        <Form.Label>Tel No</Form.Label>
+                        <Form.Label className='font-weight-bold'>Tel No</Form.Label>
                         <Form.Control
                             required
                             type="number"
@@ -136,7 +126,7 @@ function Employer() {
                     </Form.Group>
 
                     <Form.Group as={Col} md="6" >
-                        <Form.Label>Email Address</Form.Label>
+                        <Form.Label className='font-weight-bold'>Email Address</Form.Label>
                         <Form.Control
                             required
                             type="email"
@@ -160,11 +150,11 @@ function Employer() {
                     <Title>İş Verenler</Title>
                     <Table size="small">
                         <TableHead>
-                            <TableRow>
-                                <TableCell>Firma Adı</TableCell>
-                                <TableCell>Web Sitesi</TableCell>
-                                <TableCell>Email</TableCell>
-                                <TableCell>Tel No</TableCell>
+                            <TableRow >
+                                <TableCell className='font-weight-bold'>Firma Adı</TableCell>
+                                <TableCell className='font-weight-bold'>Web Sitesi</TableCell>
+                                <TableCell className='font-weight-bold'>Email</TableCell>
+                                <TableCell className='font-weight-bold'>Tel No</TableCell>
                             </TableRow>
                         </TableHead>
 
