@@ -16,7 +16,7 @@ export const mainListItems = (
             <ListItemIcon>
                 <DashboardIcon />
             </ListItemIcon>
-            <Link to="/advertsList">
+            <Link to="/advertsList" style={{textDecoration: 'none',color:'black'}}>
                 <ListItemText primary="Dashboard" />
             </Link>
         </ListItem>
@@ -24,7 +24,7 @@ export const mainListItems = (
             <ListItemIcon>
                 <PeopleIcon />
             </ListItemIcon>
-            <Link to="/employer">
+            <Link to="/employer" style={{textDecoration: 'none',color:'black'}}>
                 <ListItemText primary="İş veren" />
             </Link>
         </ListItem>
