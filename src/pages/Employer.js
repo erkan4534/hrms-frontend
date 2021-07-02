@@ -24,7 +24,9 @@ function Employer() {
     }
 
     const clear = () => {
-        setValues({});
+        setValues({
+            id: '', firmNameId: '', webSiteId: '', telNoId: '', passwordId: '', rePasswordId: '', emailId: ''
+        });
         setEmployerList([]);
         setValidated(false);
     }
