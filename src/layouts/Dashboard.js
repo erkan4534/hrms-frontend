@@ -9,13 +9,11 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './ListItems';
 import JobAdvertList from "../pages/JobAdvertList";
 import {Row,Col} from "react-bootstrap";
@@ -124,8 +122,7 @@ export default function Dashboard() {
                         color="inherit"
                         aria-label="open drawer"
                         onClick={handleDrawerOpen}
-                        className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-                    >
+                        className={clsx(classes.menuButton, open && classes.menuButtonHidden)}>
                         <MenuIcon />
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
@@ -143,8 +140,7 @@ export default function Dashboard() {
                 classes={{
                     paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
                 }}
-                open={open}
-            >
+                open={open}>
                 <div className={classes.toolbarIcon}>
                     <IconButton onClick={handleDrawerClose}>
                         <ChevronLeftIcon />
@@ -159,12 +155,10 @@ export default function Dashboard() {
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid container spacing={3}>
-
                         <Grid item xs={12}>
                             <Paper className={fixedHeightPaper}>
-
-                                <Row >
-                                    <Col  sm={12}>
+                                <Row>
+                                    <Col sm={12}>
                                         <Route exact path="/" component={JobAdvertList}/>
                                         <Route exact path="/advertsList" component={JobAdvertList}/>
                                         <Route exact path="/advert" component={JobAdvert}/>
