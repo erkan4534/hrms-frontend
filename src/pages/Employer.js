@@ -23,12 +23,18 @@ function Employer() {
         setValues({...values, [event.target.name]: event.target.value});
     }
 
-    let clear = () => {
-        document.getElementById("employerForm").reset();
+
+    const clear = () => {
+
+        setValues({});
+        setEmployerList([]);
+        setValidated(false);
     }
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        event.stopPropagation();
         addOrEditEmployer(values);
         setValidated(true);
     };
@@ -51,17 +57,25 @@ function Employer() {
 
         if (params.id) {
             employerService.editEmployer(params).then(res => {
-
+                if (res.data.success === true) {
+                    toast.info(res.data.message)
+                    clear();
+                } else {
+                    toast.error(res.data.message)
+                }
             });
         } else {
             employerService.addEmployer(params).then(res => {
                 if (res.data.success === true) {
                     toast.info(res.data.message)
+                    clear();
                 } else {
                     toast.error(res.data.message)
                 }
             });
         }
+
+
     }
 
     let updateEmployer = (object) => {
@@ -93,7 +107,7 @@ function Employer() {
 
     return (
         <div>
-            <Form id="employerForm" noValidate validated={validated} onSubmit={handleSubmit}>
+            <Form id="employerForm" onReset={clear} noValidate validated={validated} onSubmit={handleSubmit}>
                 <Form.Row>
                     <Form.Group as={Col} md="6">
                         <Form.Label className='font-weight-bold'>Firm Name</Form.Label>
@@ -181,6 +195,7 @@ function Employer() {
 
                 <Button type="submit" className='mr-2'>Kaydet</Button>
                 <Button onClick={() => getEmployerList(values)} className='mr-2'>Ara</Button>
+                <Button type="reset" className='mr-2' >Temizle</Button>
             </Form>
 
             {(employerList.length > 0) && <div className='mt-4'>
