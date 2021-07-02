@@ -118,7 +118,7 @@ export default function Dashboard() {
             <ToastContainer position="bottom-right"/>
             <CssBaseline />
             <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-                <Toolbar className={classes.toolbar}>
+                <Toolbar className={classes.toolbar} style={{backgroundColor:"#007bff"}}>
                     <IconButton
                         edge="start"
                         color="inherit"
