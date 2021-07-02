@@ -4,14 +4,17 @@ import axios from "axios";
 
 class EmployerService extends Component {
 
-    employerAdd(params){
+    addEmployer(params){
         return axios.post('http://localhost:8080/api/employers/add', params);
     }
 
-    getAllEmployers(params){
+    getEmployerList(params){
         return axios.get('http://localhost:8080/api/employers/getAll',{params});
     }
 
+    editEmployer(params){
+        return axios.put( `http://localhost:8080/api/employers/edit/${params.id}`, params);
+    }
 }
 
 export default EmployerService;
