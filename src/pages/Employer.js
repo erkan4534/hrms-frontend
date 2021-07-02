@@ -23,14 +23,11 @@ function Employer() {
         setValues({...values, [event.target.name]: event.target.value});
     }
 
-
     const clear = () => {
-
         setValues({});
         setEmployerList([]);
         setValidated(false);
     }
-
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -45,7 +42,7 @@ function Employer() {
             id: values.id,
             firmName: values.firmNameId,
             person: {
-                id:values.id,
+                id: values.id,
                 email: values.emailId,
                 password: values.passwordId,
                 telNo: values.telNoId
@@ -74,8 +71,6 @@ function Employer() {
                 }
             });
         }
-
-
     }
 
     let updateEmployer = (object) => {
@@ -195,7 +190,7 @@ function Employer() {
 
                 <Button type="submit" className='mr-2'>Kaydet</Button>
                 <Button onClick={() => getEmployerList(values)} className='mr-2'>Ara</Button>
-                <Button type="reset" className='mr-2' >Temizle</Button>
+                <Button type="reset" className='mr-2'>Temizle</Button>
             </Form>
 
             {(employerList.length > 0) && <div className='mt-4'>
