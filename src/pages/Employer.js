@@ -32,11 +32,9 @@ function Employer() {
         setValidated(false);
     }
 
-    const [totalPages, setTotalPages] = useState();
     const [itemsCountPerPage, setItemsCountPerPage] = useState();
     const [totalItemsCount, setTotalItemsCount] = useState();
     const [activePage, setActivePage] = useState(1);
-
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -97,6 +95,8 @@ function Employer() {
 
     let getEmployerList = (values) => {
         let employerService = new EmployerService();
+
+
         const params = {
             firmName: values.firmNameId,
             email: values.emailId,
@@ -106,7 +106,6 @@ function Employer() {
 
         employerService.getEmployerList(params, 0, 1).then(result => {
             setEmployerList(result.data.data.content)
-            setTotalPages(result.data.data.totalPages);
             setItemsCountPerPage(result.data.data.size);
             setTotalItemsCount(result.data.data.totalElements);
         });
@@ -126,7 +125,6 @@ function Employer() {
         let employerService = new EmployerService();
         employerService.getEmployerList(params, activePage-1, 1).then(result => {
             setEmployerList(result.data.data.content)
-            setTotalPages(result.data.data.totalPages);
             setItemsCountPerPage(result.data.data.size);
             setTotalItemsCount(result.data.data.totalElements);
         });
