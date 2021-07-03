@@ -9,6 +9,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
+import Pagination from "react-js-pagination";
 
 function Employer() {
 
@@ -30,6 +31,15 @@ function Employer() {
         setEmployerList([]);
         setValidated(false);
     }
+
+    const [totalPages, setTotalPages] = useState();
+    const [itemsCountPerPage, setItemsCountPerPage] = useState();
+    const [totalItemsCount, setTotalItemsCount] = useState();
+
+    const [activePage, setActivePage] = useState(1);
+
+
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -97,10 +107,37 @@ function Employer() {
             webSite: values.webSiteId
         };
 
-        employerService.getEmployerList(params,0,5).then(result => {
-            setEmployerList(result.data.data)
+        employerService.getEmployerList(params, 0, 2).then(result => {
+            setEmployerList(result.data.data.content)
         });
     }
+
+    let changeCurrentPage = numPage => {
+
+        setActivePage(numPage);
+
+        const params = {
+            firmName: values.firmNameId,
+            email: values.emailId,
+            telNo: values.telNoId,
+            webSite: values.webSiteId
+        };
+
+
+        let employerService = new EmployerService();
+
+        employerService.getEmployerList(params, activePage-1, 1).then(result => {
+            setEmployerList(result.data.data.content)
+            setTotalPages(result.data.data.totalPages);
+            setItemsCountPerPage(result.data.data.size);
+            setTotalItemsCount(result.data.data.totalElements);
+        });
+
+
+
+
+    };
+
 
     return (
         <div>
@@ -217,6 +254,17 @@ function Employer() {
                         ))}
                     </TableBody>
                 </Table>
+
+                <div className="d-flex justify-content-center">
+                    <Pagination
+                        activePage={activePage}
+                        itemsCountPerPage={itemsCountPerPage}
+                        totalItemsCount={totalItemsCount}
+                        pageRangeDisplayed={10}
+                        itemClass='page-item'
+                        linkClass='btn btn-light'
+                        onChange={changeCurrentPage}/>
+                </div>
             </div>
             }
 
