@@ -107,8 +107,11 @@ function Employer() {
             webSite: values.webSiteId
         };
 
-        employerService.getEmployerList(params, 0, 2).then(result => {
+        employerService.getEmployerList(params, 0, 1).then(result => {
             setEmployerList(result.data.data.content)
+            setTotalPages(result.data.data.totalPages);
+            setItemsCountPerPage(result.data.data.size);
+            setTotalItemsCount(result.data.data.totalElements);
         });
     }
 
@@ -123,19 +126,13 @@ function Employer() {
             webSite: values.webSiteId
         };
 
-
         let employerService = new EmployerService();
-
         employerService.getEmployerList(params, activePage-1, 1).then(result => {
             setEmployerList(result.data.data.content)
             setTotalPages(result.data.data.totalPages);
             setItemsCountPerPage(result.data.data.size);
             setTotalItemsCount(result.data.data.totalElements);
         });
-
-
-
-
     };
 
 
@@ -262,7 +259,7 @@ function Employer() {
                         totalItemsCount={totalItemsCount}
                         pageRangeDisplayed={10}
                         itemClass='page-item'
-                        linkClass='btn btn-light'
+                        linkClass='btn btn-blue'
                         onChange={changeCurrentPage}/>
                 </div>
             </div>
