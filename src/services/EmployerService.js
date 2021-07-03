@@ -8,8 +8,8 @@ class EmployerService extends Component {
         return axios.post('http://localhost:8080/api/employers/add', params);
     }
 
-    getEmployerList(params){
-        return axios.get('http://localhost:8080/api/employers/getAll',{params});
+    getEmployerList(params,pageNo,pageSize){
+        return axios.get(`http://localhost:8080/api/employers/getAll/${pageNo}/${pageSize}`,{params});
     }
 
     editEmployer(params){
