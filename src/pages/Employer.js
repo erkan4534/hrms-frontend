@@ -184,9 +184,6 @@ function Employer() {
                             onChange={onChangeHandler}
                             placeholder="Enter email"/>
                         <Feedback type="invalid">Enter properly email address!</Feedback>
-                        <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
-                        </Form.Text>
                     </Form.Group>
                 </Form.Row>
 
