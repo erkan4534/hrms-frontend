@@ -35,10 +35,7 @@ function Employer() {
     const [totalPages, setTotalPages] = useState();
     const [itemsCountPerPage, setItemsCountPerPage] = useState();
     const [totalItemsCount, setTotalItemsCount] = useState();
-
     const [activePage, setActivePage] = useState(1);
-
-
 
 
     const handleSubmit = (event) => {
@@ -57,13 +54,13 @@ function Employer() {
                 id: values.id,
                 email: values.emailId,
                 password: values.passwordId,
+                rePassword: values.rePasswordId,
                 telNo: values.telNoId
             },
             webSite: values.webSiteId
         };
 
-        let employerService = new EmployerService()
-
+        let employerService = new EmployerService();
         if (params.id) {
             employerService.editEmployer(params).then(res => {
                 if (res.data.success === true) {
@@ -90,10 +87,10 @@ function Employer() {
             id: object.id,
             firmNameId: object.firmName,
             webSiteId: object.webSite,
-            emailId: object.person.email,
             telNoId: object.person.telNo,
             passwordId: object.person.password,
-            rePasswordId: object.person.password
+            rePasswordId: object.person.password,
+            emailId: object.person.email
         }
         setValues(params);
     }
