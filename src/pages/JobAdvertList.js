@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import JobAdvertService from "../services/JobAdvertService";
-import {Table} from "reactstrap";
+import {Button, Table} from "reactstrap";
 import {Container} from "react-bootstrap";
 import Title from "../layouts/Title";
 import TableHead from "@material-ui/core/TableHead";
@@ -8,8 +8,12 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
 import {makeStyles} from "@material-ui/core/styles";
+import {useDispatch} from "react-redux";
+import {getJobAdvertList} from "../store/actions/JobAdvertActions";
 
 function JobAdvertList() {
+
+    const dispatch = useDispatch();
 
     const [jobAdverts, setJobAdverts] = useState([]);
 
@@ -24,7 +28,9 @@ function JobAdvertList() {
         jobAdvertService.getJobAdverts().then(result => setJobAdverts(result.data.data));
     }, [])
 
-    const classes = useStyles();
+    const handleGetJobAdvertList=(jobAdvert)=>{
+        dispatch(getJobAdvertList(jobAdvert))
+    }
 
     return (
         <React.Fragment>
@@ -51,6 +57,9 @@ function JobAdvertList() {
                     ))}
                 </TableBody>
             </Table>
+
+           <Button onClick={()=>handleGetJobAdvertList()}>deneme</Button>
+
         </React.Fragment>
 
     );
